@@ -7,7 +7,7 @@ def trade_spider(max_pages):
         url = 'https://majestic.com/reports/majestic-million?s=' + str(page)
         source_code = requests.get(url)
         plain_text = source_code.text
-        soup = bs(plain_text)
+        soup = bs(plain_text, "lxml")
         for link in soup.findAll('a', {'rel':'nofollow'}):
             href = link.get('href')
         page += 100
